@@ -1,25 +1,20 @@
-import React from "react";
-import logo from "../logo.svg";
+import React, { Suspense, lazy }  from 'react';
+import { Route, withRouter } from 'react-router-dom';
+// import Header from './Header';
 
-function App() {
+const Login = lazy(() => import('./Login'));
+const Dashboard = lazy(() => import('./Dashboard'));
+
+function App({location}) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* {location.pathname !== '/' && <Header/>} */}
+      <Suspense fallback={<h3>Loading...</h3>}>
+          <Route path="/" exact component={Login} />
+          <Route path="/dashboard" component={Dashboard} />
+      </Suspense>
+    </>
   );
 }
 
-export default App;
+export default withRouter(App);

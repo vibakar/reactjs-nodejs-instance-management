@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #E9F0F0;
 }
 
 code {
@@ -40,6 +41,93 @@ code {
 
 .App-link {
   color: #61dafb;
+}
+
+.form-container {
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text-center {
+  text-align: center;
+}
+
+form {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.input-width {
+  width: 100%;
+}
+
+.submit-btn {
+  background-color: #005A3C !important;
+  width: 100%;
+  color: #ffffff !important;
+  text-transform: initial !important;
+}
+
+.form-label {
+  font-size: 12px;
+  padding-bottom: 5px;
+}
+
+.toggle-form {
+  cursor: pointer;
+  color: blue;
+  font-size: 12px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.header {
+  flex-grow: 1;
+}
+
+.app-bar {
+  background-color: #005A3C !important;
+}
+
+.summary {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 10px;
+}
+
+.table-heading {
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+
+.table-head {
+  background-color: #7D9181;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #E9F0F0;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #B8D5D1;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.pl-50 {
+  padding-left: 50px;
+}
+
+.fl-right {
+  float: right;
 }
 
 @keyframes App-logo-spin {
