@@ -16,18 +16,15 @@ export default class ApiService {
 				});
 	}
 
-	// static getSingleUser(id) {
-	// 	return axios.get("http://localhost:4000/users/" + id)
-	// 			.then(res => res.data);
-	// }
-
-	// static updateUser(user) {
-	// 	return axios.put("http://localhost:4000/users/" + user.id, user)
-	// 			.then(res => res.data);
-	// }
-
-	// static addUser(user) {
-	// 	return axios.post("http://localhost:4000/users/", user)
-	// 			.then(res => res.data);
-	// }
+	static logout() {
+		let token = sessionStorage.getItem('authorization');
+		return axios({
+			method: 'post',
+			url: `${endpoint}/api/logout`,
+			headers: {
+			  Authorization: 'Bearer ' + token
+			}
+		  })
+		.then(res => res.data);
+	}
 }
