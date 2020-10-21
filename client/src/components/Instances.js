@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -10,21 +10,21 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-function createData(id, instanceName, costPerHour, status) {
-    return { id, instanceName, costPerHour, status };
-  }
-  
-  const rows = [
-    createData(1, 't2.micro', 0.85, 'stopped'),
-    createData(2, 't2.large', 9.0, 'running'),
-    createData(3, 't2.micro', 16.0, 'stopped'),
-    createData(4, 't2.nano', 13.67, 'stopped'),
-    createData(5, 't2.large', 16.0, 'running'),
-    createData(6, 't2.nano', 14.0, 'stopped'),
-    createData(7, 't2.large', 9.0, 'stopped')
-  ];
+function Instances(props) {
 
-function Instances() {
+    useEffect(()=> {
+        console.log(props.costFormat, '---ins cost format---');
+    }, [props.costFormat])
+
+    const getEntity = () => {
+        return props.costFormat === 'usd' ? String.fromCharCode(36) : String.fromCharCode(8377);
+    }
+
+    const getCost = (cost) => {
+        var usdPerRup = 0.015;
+        return (props.costFormat === 'usd') ? cost : (cost/usdPerRup).toFixed(2);
+    }
+
   return (
     <Card  className="summary">
         <CardContent>
@@ -43,13 +43,15 @@ function Instances() {
                         </TableRow>
                         </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
+                        {props.instances && props.instances.map((row) => (
                             <TableRow key={row.id}>
                                 <TableCell component="th" scope="row">{row.id}</TableCell>
-                                <TableCell align="center">{row.instanceName}</TableCell>
-                                <TableCell align="center">{row.costPerHour}</TableCell>
+                                <TableCell align="center">{row.name}</TableCell>
+                                <TableCell align="center">
+                                   <span>{getEntity()}</span> <span>{getCost(row.costPerHour)}</span>
+                                </TableCell>
                                 <TableCell align="center">{row.status}</TableCell>
-                                <TableCell align="center">{row.status === 'running' ? 'stop' : 'start'}</TableCell>
+                                <TableCell align="center">{row.status.toLowerCase() === 'running' ? 'stop' : 'start'}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

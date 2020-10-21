@@ -47,4 +47,16 @@ export default class ApiService {
 		  })
 		.then(res => res.data);
 	}
+
+	static getInstances() {
+		let token = sessionStorage.getItem('authorization');
+		return axios({
+			method: 'get',
+			url: `${endpoint}/api/instances`,
+			headers: {
+			  Authorization: 'Bearer ' + token
+			}
+		  })
+		.then(res => res.data);
+	}
 }
