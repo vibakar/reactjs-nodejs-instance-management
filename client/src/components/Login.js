@@ -18,14 +18,20 @@ function Login(props) {
     e.preventDefault();
     if(login) {
       ApiService.login(userData).then(resp => {
-        if(resp && resp.success)
-          props.history.push('/dashboard');
-        else
-          setLoginErr(true);
-      }).catch(err => setLoginErr(true))
+        success(resp);
+      }).catch(err => setLoginErr(true));
     } else {
-      console.log('SIgnup API')
+      ApiService.register(userData).then(resp => {
+        success(resp);
+      }).catch(err => setLoginErr(true));
     }
+  }
+
+  const success = (resp) => {
+    if(resp && resp.success)
+      props.history.push('/dashboard');
+    else
+      setLoginErr(true);
   }
 
   const handleChange = (e) => {
