@@ -4,7 +4,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Switch from '@material-ui/core/Switch';
 
-function Cost(props) {
+function CostSummary(props) {
   const [checked, toggleSwitch] = useState(props.costFormat === 'usd' ? true : false);
   const [stoppedCost, setStoppedCost] = useState(0);
   const [runningCost, setRunningCost] = useState(0);
@@ -46,11 +46,11 @@ function Cost(props) {
     <Card className="summary">
         <CardContent>
           <div className="d-inline-block">
-            <Typography><span>{getEntity()}</span> <span>{runningCost.toFixed(2)}/hr</span></Typography>
+            <Typography><strong>{getEntity()}</strong> <strong>{runningCost.toFixed(2)}/hr</strong></Typography>
             <Typography>Running Instances</Typography>
           </div>
           <div className="d-inline-block pl-50">
-            <Typography><span>{getEntity()}</span> <span>{stoppedCost.toFixed(2)}/hr</span></Typography>
+            <Typography><strong>{getEntity()}</strong> <strong>{stoppedCost.toFixed(2)}/hr</strong></Typography>
             <Typography>Stopped Instances</Typography>
           </div>
           <div className="d-inline-block fl-right">
@@ -69,4 +69,4 @@ function Cost(props) {
   );
 }
 
-export default Cost;
+export default CostSummary;

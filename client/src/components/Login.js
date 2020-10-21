@@ -11,6 +11,7 @@ function Login(props) {
 
   const [login, setLogin] = useState(true);
   const [loginErr, setLoginErr] = useState(false);
+  const [signupErr, setSignupErr] = useState(false);
   const [userData, setUserData] = useState({email: '', password: ''});
   const [btnDisabled, setBtnDisabled] = useState(true);
 
@@ -18,20 +19,21 @@ function Login(props) {
     e.preventDefault();
     if(login) {
       ApiService.login(userData).then(resp => {
-        success(resp);
+        success(resp, 'login');
       }).catch(err => setLoginErr(true));
     } else {
       ApiService.register(userData).then(resp => {
-        success(resp);
-      }).catch(err => setLoginErr(true));
+        success(resp, 'signup');
+      }).catch(err => setSignupErr(true));
     }
   }
 
-  const success = (resp) => {
+  const success = (resp, type) => {
     if(resp && resp.success)
       props.history.push('/dashboard');
     else
-      setLoginErr(true);
+      if(type === 'login') setLoginErr(true);
+      else setSignupErr(true);
   }
 
   const handleChange = (e) => {
@@ -54,7 +56,8 @@ function Login(props) {
           <Typography className="text-center" gutterBottom variant="h5" component="h2">
               {login ? 'Sign in' : 'Sign up'}
           </Typography>
-          {loginErr ? <p className="login-err">{login ? 'Email or Password Incorrect' : 'User Already Exists!'}</p> : ''}
+          {login && loginErr ? <p className="login-err">Email or Password Incorrect</p> : ''}
+          {!login && signupErr ? <p className="login-err">User already Exists!</p> : ''}
           <form noValidate autoComplete="off" onSubmit={doLogin}>
             <div className="form-label"><label>EMAIL</label></div>
             <div>
@@ -83,7 +86,7 @@ function Login(props) {
               />
             </div>
             <br></br>
-            <Button type="submit" onClick={doLogin} disabled={btnDisabled} className="submit-btn" variant="outlined" size="medium">
+            <Button role="submit" type="submit" onClick={doLogin} disabled={btnDisabled} className="submit-btn" variant="outlined" size="medium">
               {login ? 'Login' : 'Create an account'}
             </Button>
           </form>

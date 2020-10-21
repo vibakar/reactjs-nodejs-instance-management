@@ -1,14 +1,12 @@
 import React, { Suspense, lazy }  from 'react';
-import { Route, withRouter } from 'react-router-dom';
-// import Header from './Header';
+import { Route } from 'react-router-dom';
 
 const Login = lazy(() => import('./Login'));
 const Dashboard = lazy(() => import('./Dashboard'));
 
-function App({location}) {
+function App() {
   return (
     <>
-      {/* {location.pathname !== '/' && <Header/>} */}
       <Suspense fallback={<h3>Loading...</h3>}>
           <Route path="/" exact component={Login} />
           <Route path="/dashboard" component={Dashboard} />
@@ -17,4 +15,4 @@ function App({location}) {
   );
 }
 
-export default withRouter(App);
+export default App;

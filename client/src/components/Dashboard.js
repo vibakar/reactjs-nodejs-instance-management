@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from './Header';
-import Cost from './Cost';
+import CostSummary from './CostSummary';
 import Instances from './Instances';
 import ApiService from '../services/api.service';
 
@@ -41,7 +41,7 @@ function Dashboard() {
   return (
     <>
       <Header></Header>
-      <Cost instances={instances} costFormat={costFormat} setCostFormat={setCostFormat}></Cost>
+      <CostSummary instances={instances} costFormat={costFormat} setCostFormat={setCostFormat}></CostSummary>
       <Instances instances={instances} costFormat={costFormat} setCostFormat={setCostFormat} handleAction={handleAction}></Instances>
     </>
   );

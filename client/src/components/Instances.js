@@ -16,7 +16,7 @@ function Instances(props) {
     <Card className="summary">
         <CardContent>
             <Typography className="table-heading" gutterBottom>
-                Instances
+                <strong>Instances</strong>
             </Typography>
             <TableContainer component={Paper}>
                 <Table aria-label="simple table">
