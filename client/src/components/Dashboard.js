@@ -19,11 +19,30 @@ function Dashboard() {
     }
   });
 
+  const updateInstance = (instance) => {
+    let updatedInstances = instances.map(ins => {
+      return (ins.id === instance.id) ? instance: ins;
+    });
+    setInstances(updatedInstances);
+  }
+
+  const handleAction = (status, id) => {
+    if(status.toLowerCase() === "running") {
+        ApiService.stopInstance(id).then(resp=> {
+          updateInstance(resp.updatedInstance);
+        });
+    } else {
+        ApiService.startInstance(id).then(resp=> {
+          updateInstance(resp.updatedInstance);
+        });
+    }
+  }
+
   return (
     <>
       <Header></Header>
       <Cost instances={instances} costFormat={costFormat} setCostFormat={setCostFormat}></Cost>
-      <Instances instances={instances} costFormat={costFormat} setCostFormat={setCostFormat}></Instances>
+      <Instances instances={instances} costFormat={costFormat} setCostFormat={setCostFormat} handleAction={handleAction}></Instances>
     </>
   );
 }

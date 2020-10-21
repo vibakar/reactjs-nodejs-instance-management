@@ -54,7 +54,7 @@ function Login(props) {
           <Typography className="text-center" gutterBottom variant="h5" component="h2">
               {login ? 'Sign in' : 'Sign up'}
           </Typography>
-          {loginErr ? <p className="login-err">Email or Password Incorrect</p> : ''}
+          {loginErr ? <p className="login-err">{login ? 'Email or Password Incorrect' : 'User Already Exists!'}</p> : ''}
           <form noValidate autoComplete="off" onSubmit={doLogin}>
             <div className="form-label"><label>EMAIL</label></div>
             <div>

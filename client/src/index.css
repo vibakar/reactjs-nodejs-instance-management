@@ -138,6 +138,16 @@ tbody tr:nth-child(odd) {
   text-align: center;
   color: red;
 }
+
+.status-action {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.text-danger {
+  color: red;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
