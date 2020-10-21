@@ -118,18 +118,6 @@ tbody tr:nth-child(odd) {
   background-color: #B8D5D1;
 }
 
-.d-inline-block {
-  display: inline-block;
-}
-
-.pl-50 {
-  padding-left: 50px;
-}
-
-.fl-right {
-  float: right;
-}
-
 .logout-btn {
   text-transform: initial !important;
 }
@@ -150,6 +138,18 @@ tbody tr:nth-child(odd) {
 
 .MuiSwitch-colorPrimary.Mui-checked {
   color: #005A3C !important;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container div {
+  margin-left: 20px;
+}
+
+.ml-auto {
+  margin-left: auto !important;
 }
 
 @keyframes App-logo-spin {

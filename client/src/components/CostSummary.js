@@ -45,24 +45,26 @@ function CostSummary(props) {
   return (
     <Card className="summary">
         <CardContent>
-          <div className="d-inline-block">
-            <Typography><strong>{getEntity()}</strong> <strong>{runningCost.toFixed(2)}/hr</strong></Typography>
-            <Typography>Running Instances</Typography>
-          </div>
-          <div className="d-inline-block pl-50">
-            <Typography><strong>{getEntity()}</strong> <strong>{stoppedCost.toFixed(2)}/hr</strong></Typography>
-            <Typography>Stopped Instances</Typography>
-          </div>
-          <div className="d-inline-block fl-right">
-            <Typography>
-            <span>INR</span>
-              <Switch
-                checked={checked}
-                onChange={handleSwitch}
-                color="primary"
-              />
-              <span>USD</span>
-            </Typography>
+          <div className="flex-container">
+            <div>
+              <Typography><strong>{getEntity()}</strong> <strong>{runningCost.toFixed(2)}/hr</strong></Typography>
+              <Typography>Running Instances</Typography>
+            </div>
+            <div>
+              <Typography><strong>{getEntity()}</strong> <strong>{stoppedCost.toFixed(2)}/hr</strong></Typography>
+              <Typography>Stopped Instances</Typography>
+            </div>
+            <div className="ml-auto">
+              <Typography>
+              <span>INR</span>
+                <Switch
+                  checked={checked}
+                  onChange={handleSwitch}
+                  color="primary"
+                />
+                <span>USD</span>
+              </Typography>
+            </div>
           </div>
         </CardContent>
     </Card>
