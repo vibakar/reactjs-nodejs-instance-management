@@ -130,6 +130,14 @@ tbody tr:nth-child(odd) {
   float: right;
 }
 
+.logout-btn {
+  text-transform: initial !important;
+}
+
+.login-err {
+  text-align: center;
+  color: red;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
